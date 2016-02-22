@@ -1,0 +1,11 @@
+<div>
+  Logged in as: <%= @admin.email %>
+</div>
+<div>
+  <% @brokers.each do |broker| %>
+  <div>
+    <h3><%= broker.name %></h3>
+  </div>
+  <br>
+<% end %>
+</div>
