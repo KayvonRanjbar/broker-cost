@@ -1,11 +1,15 @@
 <div>
   Logged in as: <%= @admin.email %>
 </div>
+<hr>
+<div>
+  <%= link_to "Add a Broker", new_broker_path %>
+</div>
+<br>
 <div>
   <% @brokers.each do |broker| %>
   <div>
-    <h3><%= broker.name %></h3>
+    Broker: <%= link_to broker.name, broker_path(broker) %><%= button_to "edit", edit_broker_path(broker) %><%= button_to "delete", delete_broker_path(broker), method: :delete, data: {confirm: "Are you sure you want to delete #{broker.name}?"} %>
   </div>
-  <br>
 <% end %>
 </div>

@@ -1,1 +1,10 @@
-<%= @broker.name %>
+<div>
+  <h2><%= @broker.name %></h2>
+</div>
+<div>
+  <p>Minimum Deposit: $<%= @broker.min_deposit %></p>
+  <p>Stock Trade Fee: $<%= @broker.stock_trade_fee %></p>
+  <p>Mutual Fund Trade Fee: $<%= @broker.mutual_fund_trade_fee %></p>
+  <p>Option Base Trade Fee: $<%= @broker.option_base_trade_fee %></p>
+  <p>Margin Rate: <%= @broker.margin_rate * 100 %>%</p>
+</div>

@@ -1,2 +1,29 @@
-<h1>Site#index</h1>
-<p>Find me in app/views/site/index.html.erb</p>
+<div data-ng-controller="DataController as dc">
+  <div>
+    <label>How much do you have to invest?</label>
+    <input data-ng-model="dc.minDeposit"></input>
+  </div>
+  <div>
+    <label>How many stock trades do you make each quarter?</label>
+    <input placeholder="e.g. 100"></input>
+  </div>
+  <div>
+    <label>How many mutual fund trades do you make each quarter?</label>
+    <input placeholder="e.g. 100"></input>
+  </div>
+  <div>
+    <label>How many option trades do you make each quarter?</label>
+    <input placeholder="e.g. 100"></input>
+  </div>
+  <div>
+    <label>How much margin do you generally use?</label>
+    <input placeholder="e.g. $1,000"></input>
+  </div>
+  <div>
+    <input type="submit" value="Calculate"><br>
+  </div>
+
+  <%= javascript_tag do %>
+    window.brokers = <%=raw Broker.all.to_json %>;
+  <% end %>
+</div>

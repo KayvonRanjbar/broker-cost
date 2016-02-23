@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   patch "/brokers/:id", to: "brokers#update"
 
+  delete "/brokers/:id", to: "brokers#destroy", as: "delete_broker"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

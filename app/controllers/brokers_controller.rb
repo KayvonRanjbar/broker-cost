@@ -1,5 +1,7 @@
 class BrokersController < ApplicationController
 
+  before_action :current_admin
+
   def new
     @broker = Broker.new
   end
@@ -23,6 +25,12 @@ class BrokersController < ApplicationController
 
   def show
     @broker = Broker.find_by_id(params[:id])
+  end
+
+  def destroy
+    @broker = Broker.find_by_id(params[:id])
+    @broker.destroy
+    redirect_to current_admin
   end
 
 end
