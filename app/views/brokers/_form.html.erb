@@ -1,0 +1,29 @@
+<%= form_for @broker do |f| %>
+  <div>
+    <%= f.text_field :name, placeholder: "Name" %>
+  </div>
+  <div>
+    <%= f.text_field :website, placeholder: "Website" %>
+  </div>
+  <div>
+    <%= f.text_field :image, placeholder: "Image URL" %>
+  </div>
+  <div>
+    <%= f.number_field :min_deposit, placeholder: "Minimum Deposit" %>
+  </div>
+  <div>
+    <%= f.number_field :stock_trade_fee, placeholder: "Stock Trade Fee" %>
+  </div>
+  <div>
+    <%= f.number_field :mutual_fund_trade_fee, placeholder: "Mutual Fund Trade Fee" %>
+  </div>
+  <div>
+    <%= f.number_field :option_base_trade_fee, placeholder: "Option Base Trade Fee" %>
+  </div>
+  <div>
+    <%= f.number_field :margin_rate, step: 0.0001, placeholder: "Margin Rate" %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

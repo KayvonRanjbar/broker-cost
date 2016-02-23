@@ -9,6 +9,16 @@ Rails.application.routes.draw do
 
   post "/sessions", to: "sessions#create"
 
+  get "/brokers/new", to: "brokers#new", as: "new_broker"
+
+  post "/brokers", to: "brokers#create"
+
+  get "/brokers/:id", to: "brokers#show", as: "broker"
+
+  get "/brokers/:id/edit", to: "brokers#edit", as: "edit_broker"
+
+  patch "/brokers/:id", to: "brokers#update"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
