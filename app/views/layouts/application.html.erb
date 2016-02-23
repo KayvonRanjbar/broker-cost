@@ -10,19 +10,23 @@
   <!-- angular -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
 
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
   <%= javascript_include_tag 'application' %>
 
 </head>
 <body>
 
-<ul>
+<nav>
+  <%= link_to "Home", root_path %>
   <% if current_admin %>
-    <li><%= link_to "Profile", admin_path(current_admin) %></li>
-    <li><%= link_to "Log Out", logout_path %></li>
+    <%= link_to "Profile", admin_path(current_admin) %>
+    <%= link_to "Log Out", logout_path %>
   <% else %>
-    <li><%= link_to "Admin Log In", login_path %></li>
+    <%= link_to "Admin Log In", login_path %>
   <% end %>
-</ul>
+</nav>
+<br>
 
 <% flash.each do |name, msg| %>
   <p>

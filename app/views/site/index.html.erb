@@ -5,30 +5,32 @@
   </div>
   <div>
     <label>How many stock trades do you make each quarter?</label>
-    <input placeholder="e.g. 100"></input>
+    <input data-ng-model="dc.stockTrades"></input>
   </div>
   <div>
     <label>How many mutual fund trades do you make each quarter?</label>
-    <input placeholder="e.g. 100"></input>
+    <input data-ng-model="dc.mutualFundTrades"></input>
   </div>
   <div>
     <label>How many option trades do you make each quarter?</label>
-    <input placeholder="e.g. 100"></input>
+    <input data-ng-model="dc.optionTrades"></input>
   </div>
   <div>
     <label>How much margin do you generally use?</label>
-    <input placeholder="e.g. $1,000"></input>
-  </div>
-  <div>
-    <input type="submit" value="Calculate"><br>
+    <input data-ng-model="dc.marginUsed"></input>
   </div>
 
   <%= javascript_tag do %>
     window.brokers = <%=raw @brokers %>;
   <% end %>
+  <br>
 
-  <div data-ng-repeat="broker in dc.brokers ">
-    <p>{{broker.name}}: {{broker.stock_trade_fee * dc.minDeposit}}</p>
+  <h2>Broker Costs</h2>
+  <hr>
+
+  <div data-ng-repeat="broker in dc.brokers" data-ng-if="broker.min_deposit >= dc.minDeposit">
+    {{broker.name}}: ${{(dc.stockTrades * broker.stock_trade_fee) + (dc.mutualFundTrades * broker.mutual_fund_trade_fee) + (dc.optionTrades * broker.option_base_trade_fee) + (dc.marginUsed * broker.margin_rate)}}
   </div>
-
 </div>
+
+
