@@ -9,7 +9,7 @@
 <div>
   <% @brokers.each do |broker| %>
   <div>
-    Broker: <%= link_to broker.name, broker_path(broker) %><%= button_to "edit", edit_broker_path(broker) %><%= button_to "delete", delete_broker_path(broker), method: :delete, data: {confirm: "Are you sure you want to delete #{broker.name}?"} %>
+    Broker: <%= link_to broker.name, broker_path(broker) %><%= button_to "edit", edit_broker_path(broker), method: :get %><%= button_to "delete", delete_broker_path(broker), method: :delete, data: {confirm: "Are you sure you want to delete #{broker.name}?"} %>
   </div>
 <% end %>
 </div>

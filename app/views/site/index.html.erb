@@ -24,6 +24,11 @@
   </div>
 
   <%= javascript_tag do %>
-    window.brokers = <%=raw Broker.all.to_json %>;
+    window.brokers = <%=raw @brokers %>;
   <% end %>
+
+  <div data-ng-repeat="broker in dc.brokers ">
+    <p>{{broker.name}}: {{broker.stock_trade_fee * dc.minDeposit}}</p>
+  </div>
+
 </div>
