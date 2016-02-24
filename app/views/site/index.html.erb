@@ -1,36 +1,24 @@
-<div data-ng-controller="DataController as dc">
-  <div>
-    <label>How much do you have to invest?</label>
-    <input data-ng-model="dc.minDeposit"></input>
-  </div>
-  <div>
-    <label>How many stock trades do you make each quarter?</label>
-    <input data-ng-model="dc.stockTrades"></input>
-  </div>
-  <div>
-    <label>How many mutual fund trades do you make each quarter?</label>
-    <input data-ng-model="dc.mutualFundTrades"></input>
-  </div>
-  <div>
-    <label>How many option trades do you make each quarter?</label>
-    <input data-ng-model="dc.optionTrades"></input>
-  </div>
-  <div>
-    <label>How much margin do you generally use?</label>
-    <input data-ng-model="dc.marginUsed"></input>
-  </div>
+<style>
 
-  <%= javascript_tag do %>
-    window.brokers = <%=raw @brokers %>;
-  <% end %>
-  <br>
+.bar {
+  fill: steelblue;
+}
 
-  <h2>Broker Costs</h2>
-  <hr>
+.axis text {
+  font: 10px sans-serif;
+}
 
-  <div data-ng-repeat="broker in dc.brokers" data-ng-if="broker.min_deposit >= dc.minDeposit">
-    {{broker.name}}: ${{(dc.stockTrades * broker.stock_trade_fee) + (dc.mutualFundTrades * broker.mutual_fund_trade_fee) + (dc.optionTrades * broker.option_base_trade_fee) + (dc.marginUsed * broker.margin_rate)}}
-  </div>
-</div>
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
+.x.axis path {
+  display: none;
+}
 
+</style>
+
+<svg class="chart"></svg>
