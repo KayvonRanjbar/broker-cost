@@ -7,10 +7,13 @@ $(document).ready(function() {
     $("#calculate").click(function(e) {
       e.preventDefault();
       var stockTrades = $('#stock-trades').val();
+      var mfTrades = $('#mf-trades').val();
+      var optionTrades = $('#option-trades').val();
+      var marginUse = $('#margin-use').val();
       var combined_data = broker_data.map(function(obj){
         var rObj = {};
         rObj['name'] = obj.name;
-        rObj['cost'] = obj.stock_trade_fee * stockTrades;
+        rObj['cost'] = (obj.stock_trade_fee * stockTrades + obj.mutual_fund_trade_fee * mfTrades + obj.option_base_trade_fee * optionTrades + obj.margin_rate * marginUse);
         return rObj;
       })
       drawBarChart(combined_data)
