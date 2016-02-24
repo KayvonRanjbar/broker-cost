@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   delete "/brokers/:id", to: "brokers#destroy", as: "delete_broker"
 
+  get "/brokers/:query", to: "brokers#select", as: "brokers_query"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

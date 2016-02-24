@@ -33,4 +33,9 @@ class BrokersController < ApplicationController
     redirect_to current_admin
   end
 
+  def select
+    @broker1 = Broker.find_by_id(params[:foo])
+    @broker2 = Broker.find_by_id(params[:bar])
+  end
+
 end
