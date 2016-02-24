@@ -1,27 +1,35 @@
 <%= form_for @broker do |f| %>
   <div>
-    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
   </div>
   <div>
-    <%= f.text_field :website, placeholder: "Website" %>
+    <%= f.label :website, "Website" %>
+    <%= f.text_field :website %>
   </div>
   <div>
-    <%= f.text_field :image, placeholder: "Image URL" %>
+    <%= f.label :image, "Image URL" %>
+    <%= f.text_field :image %>
   </div>
   <div>
-    <%= f.number_field :min_deposit, placeholder: "Minimum Deposit" %>
+    <%= f.label :min_deposit, "Min. Deposit" %>
+    <%= f.number_field :min_deposit %>
   </div>
   <div>
-    <%= f.number_field :stock_trade_fee, placeholder: "Stock Trade Fee" %>
+    <%= f.label :stock_trade_fee, "Stock Trade Fee" %>
+    <%= f.number_field :stock_trade_fee %>
   </div>
   <div>
-    <%= f.number_field :mutual_fund_trade_fee, placeholder: "Mutual Fund Trade Fee" %>
+    <%= f.label :mutual_fund_trade_fee, "Mutual Fund Trade Fee" %>
+    <%= f.number_field :mutual_fund_trade_fee %>
   </div>
   <div>
-    <%= f.number_field :option_base_trade_fee, placeholder: "Option Base Trade Fee" %>
+    <%= f.label :option_base_trade_fee, "Option Base Trade Fee" %>
+    <%= f.number_field :option_base_trade_fee %>
   </div>
   <div>
-    <%= f.number_field :margin_rate, step: 0.0001, placeholder: "Margin Rate" %>
+    <%= f.label :margin_rate, "Margin Rate" %>
+    <%= f.number_field :margin_rate, step: 0.0001 %>
   </div>
   <div>
     <%= f.submit %>
