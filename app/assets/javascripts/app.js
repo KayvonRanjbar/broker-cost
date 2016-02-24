@@ -2,7 +2,19 @@ $(document).ready(function() {
 
   if ($('#brokers_info').length > 0) {
 
-    var data = $('#brokers_info').data('brokers');
+    var broker_data = $('#brokers_info').data('brokers');
+
+    $("#calculate").click(function(e) {
+      e.preventDefault();
+      var stockTrades = $('#stock-trades').val();
+      var combined_data = broker_data.map(function(obj){
+        var rObj = {};
+        rObj['name'] = obj.name;
+        rObj['cost'] = obj.stock_trade_fee * stockTrades;
+        return rObj;
+      })
+      drawBarChart(combined_data)
+    })
 
     function drawBarChart(calculated_data) {
       var margin = {top: 20, right: 30, bottom: 30, left: 40},
@@ -31,7 +43,7 @@ $(document).ready(function() {
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       x.domain(calculated_data.map(function(d) { return d.name; }));
-      y.domain([0, d3.max(calculated_data, function(d) { return d.stock_trade_fee; })]);
+      y.domain([0, d3.max(calculated_data, function(d) { return d.cost; })]);
 
       chart.append("g")
           .attr("class", "x axis")
@@ -48,8 +60,8 @@ $(document).ready(function() {
         .enter().append("rect")
           .attr("class", "bar")
           .attr("x", function(d) { return x(d.name); })
-          .attr("y", function(d) { return y(d.stock_trade_fee); })
-          .attr("height", function(d) { return height - y(d.stock_trade_fee); })
+          .attr("y", function(d) { return y(d.cost); })
+          .attr("height", function(d) { return height - y(d.cost); })
           .attr("width", x.rangeBand());
 
       chart.append("g")
@@ -64,7 +76,7 @@ $(document).ready(function() {
 
     }
 
-    drawBarChart(data);
+    // drawBarChart(broker_data);
 
   }
 
