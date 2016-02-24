@@ -54,9 +54,14 @@ $(document).ready(function() {
           .call(xAxis);
 
       chart.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Cost");
 
       chart.selectAll(".bar")
           .data(calculated_data)
@@ -65,17 +70,22 @@ $(document).ready(function() {
           .attr("x", function(d) { return x(d.name); })
           .attr("y", function(d) { return y(d.cost); })
           .attr("height", function(d) { return height - y(d.cost); })
-          .attr("width", x.rangeBand());
-
-      chart.append("g")
-          .attr("class", "y axis")
-          .call(yAxis)
-        .append("text")
-          .attr("transform", "rotate(-90)")
-          .attr("y", 6)
-          .attr("dy", ".71em")
-          .style("text-anchor", "end")
+          .attr("width", x.rangeBand())
           .text("Cost");
+
+      chart.selectAll(".label")
+          .data(calculated_data)
+          .enter().append("svg:text")
+              .attr("class", "label")
+              .attr("x", function(d) {
+                  return x(d.name) + x.rangeBand() / 2;
+              })
+              .attr("y", function(d) {
+                  return y(d.cost) - 5;
+              })
+              .text(function(d) {
+                  return d3.format("$")(d.cost);
+              });
 
     }
 
