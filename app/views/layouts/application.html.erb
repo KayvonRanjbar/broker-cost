@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BrokerProject</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <title>BrokerViz</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
 
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </head>
 <body>
-
-<nav>
-  <%= link_to "Home", root_path %>
-  <% if current_admin %>
-    <%= link_to "Profile", admin_path(current_admin) %>
-    <%= link_to "Log Out", logout_path %>
-  <% else %>
-    <%= link_to "Admin Log In", login_path %>
-  <% end %>
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" id="nav-title" href="/">BrokerViz</a>
+  </div>
+  <div class="collapse navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_admin %>
+        <%= link_to "Profile", admin_path(current_admin) %>
+        <%= link_to "Log Out", logout_path %>
+      <% else %>
+        <%= link_to "Admin Log In", login_path %>
+      <% end %>     
+    </ul>
+  </div><!-- /.navbar-collapse -->
 </nav>
+<!-- <br>
 <br>
+<br>
+<br> -->
 
 <% flash.each do |name, msg| %>
   <p>

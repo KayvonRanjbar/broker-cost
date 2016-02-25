@@ -1,21 +1,30 @@
-  <div>
-    <label>How many stock trades do you make each quarter?</label>
-    <input id="stock-trades" type="number"></input>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-4">
+      <div class="form-group">
+        <label>How many stock trades do you make each quarter?</label>
+        <input id="stock-trades" class="form-control" type="number"></input>
+      </div>
+      <div class="form-group">
+        <label>How many mutual fund trades do you make each quarter?</label>
+        <input id="mf-trades" class="form-control" type="number"></input>
+      </div>
+      <div class="form-group">
+        <label>How many option trades do you make each quarter?</label>
+        <input id="option-trades" class="form-control" type="number"></input>
+      </div>
+      <div class="form-group">
+        <label>How much margin do you generally use?</label>
+        <input id="margin-use" class="form-control" type="number"></input>
+      </div>
+      <div>
+        <button id="calculate" type="submit" class="btn btn-default">Calculate</button>
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-4">
+      <svg id="brokers_info" class="chart" data-brokers="<%= @brokers_data %>"></svg>
+    </div>
   </div>
-  <div>
-    <label>How many mutual fund trades do you make each quarter?</label>
-    <input id="mf-trades" type="number"></input>
-  </div>
-  <div>
-    <label>How many option trades do you make each quarter?</label>
-    <input id="option-trades" type="number"></input>
-  </div>
-  <div>
-    <label>How much margin do you generally use?</label>
-    <input id="margin-use" type="number"></input>
-  </div>
-  <div>
-    <input id="calculate" type="submit" value="Submit"></div>
-  </div>
+</div>
 
-<svg id="brokers_info" class="chart" data-brokers="<%= @brokers_data %>"></svg>
+

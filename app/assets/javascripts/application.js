@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap-3.3.6.min
+//= require turbolinks
 //= require d3
+//= require_tree .
 //= require app
