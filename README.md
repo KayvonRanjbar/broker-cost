@@ -38,10 +38,12 @@ BrokerViz is the solution for DIY investors who want to easily compare online br
 # Technologies
 * Languages
   * Ruby on Rails
+  * JavaScript
   * HTML5
   * CSS3
 * Gems/External Libraries
   * D3
+  * jQuery
   * bcrypt
   * Bootstrap
 * Database
