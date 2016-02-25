@@ -33,7 +33,7 @@ BrokerViz is the solution for DIY investors who want to easily compare online br
 <img src="ERD.jpg">
 
 # Heroku hosted project
-<a href="https://broker-viz.herokuapp.com/" target="_blank">BrokerViz</a>
+<a href="https://brokerviz.herokuapp.com/" target="_blank">BrokerViz</a>
 
 # Technologies
 * Languages
