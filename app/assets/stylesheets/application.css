@@ -15,8 +15,8 @@
  *= require_self
  */
 
-.navbar .nav > li > a {
-  color: #222D51;
+body {
+  font-family: 'Kadwa', serif;
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -32,6 +32,8 @@
   border-radius: 0;
   background: #FFFFFF;
   border-bottom: 1px solid #E5E5E5;
+  background-image: url(http://l2.yimg.com/bt/api/res/1.2/lJ7DM622U9HodEjtwz7ZOw--/YXBwaWQ9eW5ld3NfbGVnbztmaT1maWxsO2g9Mzc3O2lsPXBsYW5lO3B4b2ZmPTUwO3B5b2ZmPTA7cT03NTt3PTY3MA--/http://globalfinance.zenfs.com/images/US_AHTTP_H_FISCAL_TIMES_LIVE/07082014_Stock_Market_Ticker_original.jpg);
+  background-size: cover;
 }
 
 .navbar-brand-icon {
@@ -39,7 +41,7 @@
 }
 
 #nav-title {
-  color: #222D51;
+  color: white;
   opacity: 1;
 }
 

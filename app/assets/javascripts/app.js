@@ -4,8 +4,7 @@ $(document).ready(function() {
 
     var broker_data = $('#brokers_info').data('brokers');
 
-    $("#calculate").click(function(e) {
-      e.preventDefault();
+    $("input").keyup(function(e) {
       var stockTrades = $('#stock-trades').val();
       var mfTrades = $('#mf-trades').val();
       var optionTrades = $('#option-trades').val();
@@ -85,7 +84,7 @@ $(document).ready(function() {
           .text("Cost")
           .on('mouseover', function(d) {
             d3.select(this)
-              .attr('fill', 'red');
+              .attr('fill', 'green');
           })
           .on('mouseout', function(d) {
             d3.select(this)
@@ -112,7 +111,6 @@ $(document).ready(function() {
         .attr("y", 0 - (margin.top / 2))
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .style("text-decoration", "underline")
         .text("Annual Broker Cost");
 
     }
