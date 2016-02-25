@@ -13,14 +13,24 @@ $(document).ready(function() {
       var combined_data = broker_data.map(function(obj){
         var rObj = {};
         rObj['name'] = obj.name;
-        rObj['cost'] = (obj.stock_trade_fee * stockTrades + obj.mutual_fund_trade_fee * mfTrades + obj.option_base_trade_fee * optionTrades + obj.margin_rate * marginUse);
+        rObj['cost'] = Math.round(obj.stock_trade_fee * stockTrades + obj.mutual_fund_trade_fee * mfTrades + obj.option_base_trade_fee * optionTrades + obj.margin_rate * marginUse);
         return rObj;
       })
       drawBarChart(combined_data)
     })
 
     function drawBarChart(calculated_data) {
-      var margin = {top: 20, right: 30, bottom: 30, left: 40},
+
+      // Wiping previous bar chart
+      d3.selectAll(".label").remove();
+      d3.selectAll(".bar").remove();
+      d3.selectAll(".x axis").remove();
+      d3.selectAll(".y axis").remove();
+      d3.selectAll(".tick").remove();
+      d3.selectAll(".domain").remove();
+      d3.selectAll("text").remove();
+
+      var margin = {top: 40, right: 30, bottom: 30, left: 40},
           width = 576 - margin.left - margin.right,
           height = 300 - margin.top - margin.bottom;
 
@@ -71,7 +81,16 @@ $(document).ready(function() {
           .attr("y", function(d) { return y(d.cost); })
           .attr("height", function(d) { return height - y(d.cost); })
           .attr("width", x.rangeBand())
-          .text("Cost");
+          .attr("fill", "steelblue")
+          .text("Cost")
+          .on('mouseover', function(d) {
+            d3.select(this)
+              .attr('fill', 'red');
+          })
+          .on('mouseout', function(d) {
+            d3.select(this)
+              .attr('fill', 'steelblue');
+          });
 
       chart.selectAll(".label")
           .data(calculated_data)
@@ -83,13 +102,20 @@ $(document).ready(function() {
               .attr("y", function(d) {
                   return y(d.cost) - 5;
               })
+              .attr("text-anchor", "middle")
               .text(function(d) {
                   return d3.format("$")(d.cost);
               });
+      
+      chart.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("Annual Broker Cost");
 
     }
-
-    // drawBarChart(broker_data);
 
   }
 
